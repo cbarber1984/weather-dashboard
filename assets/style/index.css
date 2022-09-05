@@ -1,0 +1,51 @@
+:root {
+--imperial-red: #e63946ff;
+--honeydew: #f1faeeff;
+--powder-blue: #a8dadcff;
+--celadon-blue: #457b9dff;
+--prussian-blue: #1d3557ff;
+}
+
+* {
+padding: 0;
+margin: 0;
+}
+
+
+
+
+header {
+    background-color: var(--imperial-red);
+    color: var(--honeydew);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    padding: 5px;
+}
+
+#page-title {
+    text-align: center;
+}
+
+#left-column-container {
+    background-color: var(--celadon-blue);
+    padding: 10px;
+}
+
+#right-colum-container {
+    background-color: var(--prussian-blue);
+}
+
+#todays-weather-display {
+    background-color: var(--honeydew);
+    color: var(--prussian-blue)
+}
+
+#five-day-forecast-container {
+    background-color: var(--powder-blue);
+    color: var(--prussian-blue)
+}
+
+.card {
+    padding: 10px;
+    border: none;
+}

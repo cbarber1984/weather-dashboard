@@ -1,1 +1,6 @@
-# weather-dashboard
+# Weather Dashboard
+
+## Objectives
+
+## Check it Out
+
