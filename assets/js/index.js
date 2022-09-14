@@ -3,19 +3,11 @@ var apiKey = "3fd474903b34faba6e7cfec2532d9b01";
 var userCityInputEl = document.querySelector("#user-city")
 var cityName = userCityInputEl.textContent;
 var submitButton = document.querySelector('#submit-button');
-var cityNameDisplayEl = document.querySelector('#todays-weather-title');
+
 
 var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
-var weatherHistory = function(element) {
-    var cityName = element.dataset.city;
-    cityNameDisplayEl.textContent = cityName;
-    getWeatherData(cityName);
-}
 
-var displayCity = function(input) {
-    cityNameDisplayEl.textContent = input;
-}
 
 // submit click handler
 var formSubmitHandler = function(event) {
@@ -31,16 +23,6 @@ var formSubmitHandler = function(event) {
     } else {
         alert('Please enter a valid city name.')
     }
-
-    var historyDisplayEl = document.querySelector("#history-display");
-    var historyButtonEl = document.createElement("button");
-    historyButtonEl.textContent = userCity;
-    historyButtonEl.setAttribute("type", "button");
-    historyButtonEl.setAttribute("data-city", userCity);
-    historyButtonEl.setAttribute("onclick", "weatherHistory(this)");
-    historyButtonEl.classList = "btn btn-light";
-    historyDisplayEl.appendChild(historyButtonEl);
-
 };
 
 
@@ -56,7 +38,6 @@ var getWeatherData = function(userCity) {
                 response.json().then(function(data) {
                     console.log(data);
                     todaysWeather(data);
-                    displayCity(userCity);
                     fiveDayForecast(data.coord.lat, data.coord.lon);
                 })
             }
@@ -72,6 +53,16 @@ var todaysWeather = function (weatherData) {
     var todaysHumidity = weatherData.main.humidity;
     var lat = weatherData.coord.lat;
     var lon = weatherData.coord.lon;
+
+    // var displayData = [];
+
+    // const tempObj = {temp: todaysTemp}
+    // const windObj = {wind: todaysWind}
+    // const humidityObj = {humidity: todaysHumidity}
+    
+    // displayData.push(tempObj);
+    // displayData.push(windObj);
+    // displayData.push(humidityObj);
 
     const displayObj = {
     humidity: todaysHumidity,
@@ -155,98 +146,24 @@ var fiveDayForecast = function (lat, lon) {
 
 var makeForecastCards = function (input) {
     console.log(input);
-    var cardContinerEl = document.querySelector("#five-day-card-container")
-    cardContinerEl.innerHTML = "";
+
     // begin loop
+    
+    // create container for the day
 
-    for (let i = 0; i < input.length; i++) {
-        // create container for the day
-        //var cardContinerEl = document.querySelector("#five-day-card-container")
+    // create span for date
 
-        // create col
-        var colEl = document.createElement("div");
-        colEl.classList = "col"
-        
-        // create card
-        var cardEl = document.createElement("div");
-        cardEl.classList = "card forecast-card";
-        
-        // create card body
-        var cardBodyEl = document.createElement("div");
-        cardBodyEl.classList = "list-group list-group-flush forecast-data";
-        
-        
-        // create h2 for date & append to card body
-        var cardTitleEl = document.createElement("h2");
-        cardTitleEl.classList = "card-title"
-        var unixTimestamp = input[i].dt;
-        var date = new Date(unixTimestamp * 1000);
-        var dateToDisplay = date.toLocaleString("en-US", {month: "numeric", day: "numeric"});
-        cardTitleEl.textContent = dateToDisplay;
-        
-        
-        // create ul list-group
-        var cardListEl = document.createElement("ul");
-        cardListEl.classList = "list-group list-group-flush forecast-data"
-        
-        
-        //DRY idea... since so many elments have the same class attributes, should I write a helper function to apply them at once
-        // var addListClasses = function (element) {
-        //     element.classlist = "list-group-item transparent-background card-data";
-        // };
-        
-       // var listClasses = "list-group-item transparent-background card-data";
+    // create  icon
 
-        // create list item for temp & append to cardListEl
-        var cardTempEl = document.createElement("li");
-        cardTempEl.classList = "list-group-item transparent-background card-data";
-        
-        cardTempEl.textContent = "Temp: " + input[i].main.temp;
-        cardListEl.appendChild(cardTempEl);
-        
-        // create  img for icon & append to cardListEl
-        var cardImgEl = document.createElement("img");
-        cardImgEl.classList = "list-group-item transparent-background card-data";
-        cardImgEl.setAttribute("width", "50px")
-        cardImgEl.setAttribute("height", "50px")
-        cardImgEl.setAttribute("alt", "weather icon")
-        cardImgEl.setAttribute("src", `http://openweathermap.org/img/wn/${input[i].weather[0].icon}@2x.png`);
-        cardListEl.appendChild(cardImgEl);
-        
-        
-        // create list item for wind & append to cardListEl
-        var cardWindEl = document.createElement("li")
-        cardWindEl.classList = "list-group-item transparent-background card-data";
-        cardWindEl.textContent = `Wind: ${input[i].wind.speed} mph`;
-        cardListEl.appendChild(cardWindEl);
-        
-        
-        // create list item for humidity & append to cardListEl
-        var cardHumidityEl = document.createElement("li");
-        cardHumidityEl.classList = "list-group-item transparent-background card-data";
-        cardHumidityEl.textContent = `Humidity: ${input[i].main.humidity}%`;
-        cardListEl.appendChild(cardHumidityEl);
-        
-        // create list item for UV index & append to cardListEl
-        // var cardUvIndexEl = document.createElement("li");
-        // cardUvIndexEl.classList = "list-group-item transparent-background card-data"
-        // cardUvIndexEl.textContent = `UV Index: `;
+    // create list item for temp
 
-        
+    // create list item for wind
 
-        // append elements to the card body
-        cardBodyEl.appendChild(cardTitleEl);
-        cardBodyEl.appendChild(cardListEl);
-                
-        // append card body to card
-        cardEl.appendChild(cardBodyEl);
-        
-        // append card to col
-        colEl.appendChild(cardEl);
-        
-        // append col to col container
-        cardContinerEl.appendChild(colEl);
-    }
+    // create list item for humidity
+
+    // append elements to the card
+
+    // append card to card container
 
 }
 
@@ -257,21 +174,13 @@ var makeForecastCards = function (input) {
 
 // function to display today's weather
 var displayTodaysWeather = function (results) {
-    
-    // setup variables
-    // var cityNameDisplayEl = document.querySelector('#todays-weather-title');
+    var cityNameDisplayEl = document.querySelector('#todays-weather-title');
     var userCityInputEl = document.querySelector("#user-city")
+    var cityName = userCityInputEl.value;
     var todaysWeatherDisplayContainerEl = document.querySelector('#todays-weather-results');
     
-    // Clear existing data
-    cityNameDisplayEl.textContent = "";
-    todaysWeatherDisplayContainerEl.innerHTML = "";
-
-
-    // Get new data
-    // var cityName = userCityInputEl.value;
-    // console.log(`cityName is ${cityName}`);
-    // cityNameDisplayEl.textContent = cityName;
+    console.log(`cityName is ${cityName}`);
+    cityNameDisplayEl.textContent = cityName;
 
     // create elements
     // create temp element
@@ -301,9 +210,11 @@ var displayTodaysWeather = function (results) {
 
 };
 
-// function to call weather history
-// add create button function to getWeatherData() function that also adds data attribute of userCity to button
-// onclick, pass userCity to getWeatherData() function
+
+// function to display 5 day forecast
+var displayFiveDay = function () {
+
+};
 
 
 

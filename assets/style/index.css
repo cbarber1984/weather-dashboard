@@ -68,3 +68,7 @@ header {
 #history-display {
     padding: 1rem;
 }
+
+#submit-button {
+    margin: 2px;
+}
