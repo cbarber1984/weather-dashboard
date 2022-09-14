@@ -49,3 +49,18 @@ header {
     padding: 10px;
     border: none;
 }
+
+.transparent-background {
+    background-color: transparent;
+    border: none;
+}
+
+.forecast-card {
+    background-color: var(--prussian-blue);
+    color: honeydew;
+}
+
+.card-data {
+    color: honeydew;
+    padding: 0;
+}

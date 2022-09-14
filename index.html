@@ -16,14 +16,14 @@
     </head>
     <body>
         
-        <header id="header" class="header d-flex align-items-center justify-content-center mb-2">
+        <header id="header" class="header d-flex align-items-center justify-content-center mb-0">
             <h1 id="page-title" class="title">Weather Dashboard</h1>
         </header>
         
         <div id="body-container" class="container-fluid"></div>
-        <div class="row content">
+        <div class="row content gap-0">
 
-            <div id="left-column-container" class="col-sm-3">
+            <div id="left-column-container" class="col-sm-3 mb-0">
                 
                 <div id="user-input-card" class="card">
                     <h2 class="card-title">Search for a City</h2>
@@ -40,15 +40,39 @@
             </div>
             
             
-            <div id="right-column-container" class="col-sm-9">
+            <div id="right-column-container" class="col-sm-9 mb-0">
                 
                 <div id="todays-weather-display" class="card">
-                    <h1 id="todays-weather-title" class="card-title">Update to City Name and today's date</h1>
+                    <h1 id="todays-weather-display-title" class="title">Today's Weather</h1>
+                    <h2 id="todays-weather-title" class="card-title"></h2>
+                    <ul id="todays-weather-results" class="list-group list-group-flush"></ul>
                 </div>
                 
                 <div id="five-day-forecast-container" class="card">
                     <h1 id="five-day-title" class="card-title">5 Day Forecast</h1>
-                    content will load from js
+                    <div id="five-day-card-container" class="row container gap-1 ">
+                        <div class="col">
+                            <div class="card forecast-card">
+                                <div class="card-body">
+                                    <span class="card-title">9-14-22</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card forecast-card">
+                                <div class="card-body">
+                                    <h2 class="card-title">9-15-22</h2>
+                                    <ul class="list-group list-group-flush forecast-data">
+                                        <li class="list-group-item transparent-background card-data">Temp: Spam</li>
+                                        <img src="http://openweathermap.org/img/wn/10n@2x.png" width="50px" height="50px" alt="weather icon" class="list-group-item transparent-background card-data">
+                                        <li class="list-group-item transparent-background card-data">Wind: Blowing</li>
+                                        <li class="list-group-item transparent-background card-data">Humidity: Water</li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             
             </div>
