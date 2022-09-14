@@ -148,22 +148,54 @@ var makeForecastCards = function (input) {
     console.log(input);
 
     // begin loop
-    
-    // create container for the day
 
-    // create span for date
+    for (let i = 0; i < input.length; i++) {
+        // create container for the day
+        var cardContinerEl = document.querySelector("#five-day-card-container")
 
-    // create  icon
+        // create col
+        var colEl = document.createElement("div");
+        colEl.classList = "col"
 
-    // create list item for temp
+        // create card
+        var cardEl = document.createElement("div");
+        cardEl.classList = "card forecast-card";
 
-    // create list item for wind
+        // create card body
+        var cardBodyEl = document.createElement("div");
+        cardBodyEl.classList = "list-group list-group-flush forecast-data";
 
-    // create list item for humidity
 
-    // append elements to the card
+        // create h2 for date & append to card body
+        var cardTitleEl = document.createElement("h2");
+        cardTitleEl.classList = "card-title"
+        var unixTimestamp = input[i].dt;
+        var date = new Date(unixTimestamp * 1000);
+        var dateToDisplay = date.toLocaleString("en-US", {month: "numeric", day: "numeric"});
+        cardTitleEl.textContent = dateToDisplay;
+        
+        // create  img for icon
 
-    // append card to card container
+
+        // create list item for temp
+        
+        // create list item for wind
+        
+        // create list item for humidity
+        
+        
+        // append elements to the card body
+        cardBodyEl.appendChild(cardTitleEl);
+                
+        // append card body to card
+        cardEl.appendChild(cardBodyEl);
+        
+        // append card to col
+        colEl.appendChild(cardEl);
+        
+        // append col to col container
+        cardContinerEl.appendChild(colEl);
+    }
 
 }
 
